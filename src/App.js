@@ -11,10 +11,9 @@ import RegisterForm from './Pages/RegisterForm';
 import AdminForm from './Pages/AdminForm';
 import RentalPage from './Pages/RentalPage';
 import UserNavbar from './Components/Navbar/UserNavbar';
-import ViewDetailsPage from './Pages/ViewDetailsPage';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // null = not yet determined
+  const [isLoggedIn, setIsLoggedIn] = useState(null); // null = not yet determined
 
   useEffect(() => {
     const token = localStorage.getItem('authToken');
@@ -41,7 +40,7 @@ function App() {
         <Route path='/register' element={<RegisterForm />} />
         <Route path='/admin' element={<AdminForm />} />
         <Route path='/rental-section' element={<RentalPage />} />
-        <Route path='/view-details' element={<ViewDetailsPage />} />
+        
       </Routes>
 
       <Footer />

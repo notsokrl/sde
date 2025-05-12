@@ -1,29 +1,42 @@
 import React from 'react';
 import './ViewDetails.css';
-import calculatorImage from '../Assets/calculator.jpg'
+import calculatorImage from '../Assets/calculator.jpg'; // Ensure to have the image in assets
 import { ArrowLeftIcon } from '@heroicons/react/24/solid';
+import { UserCircleIcon } from '@heroicons/react/24/outline';
 
 
-const ViewDetails = () => {
+const ViewDetails = ({ onClose }) => {
+  
+
   return (
-    <main className="view-details-page">
+    <div className="view-details-page">
       <section className="view-item-details">
         <div className="view-back-container">
-          <ArrowLeftIcon className="view-back-btn" />
+          <ArrowLeftIcon className='view-back-btn' onClick={onClose}/>
         </div>
 
         <div className="item-info-container">
           <div className="view-img-container">
-            <div className="item-image">
+            <div className="view-item-image">
               <img src={calculatorImage} alt="Calculator" />
             </div>
           </div>
-          
 
           <div className="item-details-text">
-            <p className="owner-name">👤 Karla Salem</p>
-            <h2>Calculator</h2>
-            <p className="price">₱100.00</p>
+            <div className="view-post-name">
+              <div className="view-icon-frame">
+                <UserCircleIcon className="view-profile-icon" />
+              </div>
+              <p className="owner-name">Karla Salem</p>
+            </div>
+
+            <div className="view-item-name">
+              <h2>Calculator</h2>
+            </div>
+          
+            <div className="view-item-price">
+              <p className="price">₱100.00</p>
+            </div>
 
             <div className="info-grid">
               <span className="label">Rental Duration</span>
@@ -36,13 +49,11 @@ const ViewDetails = () => {
               <span>You can message din me po thru FB/ MESSENGER: KARLA SALEM</span>
             </div>
 
-            <button className="rent-now-btn">Rent Now ↩</button>
+            <button className="rent-now-btn">Rent Now</button>
           </div>
         </div>
       </section>
-
-     
-    </main>
+    </div>
   );
 };
 

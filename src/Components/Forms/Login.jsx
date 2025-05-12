@@ -43,10 +43,11 @@ const Login = ({ setIsLoggedIn }) => {
   
     // Check if the entered username and password match
     if (formData.username === savedUserData.username && formData.password === savedUserData.password) {
-      alert('Login Successful!');
+
       
       // ✅ Save a dummy token (or real token from server in real use)
-      localStorage.setItem('token', 'dummy_token_value'); 
+      localStorage.setItem('authToken', 'dummy_token_value');
+
 
       setIsLoggedIn(true);
       

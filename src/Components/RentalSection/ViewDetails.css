@@ -1,94 +1,114 @@
+/* ViewDetails.css */
+
 .view-details-page {
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f9fafb;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
-  margin-top: 78px;
+  height: 100%;
+  
 }
 
 .view-item-details {
-  width: 100%;
-  margin-top: 30px;
-  margin-left: 50px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .view-back-container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }
 
 .view-back-btn {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: color 0.2s ease;
 }
 
- .item-info-container {
-    display: flex;
-    gap: 40px;
-    margin-top: 20px;
-    margin-left: 50px;
-    flex-wrap: wrap;
-  }
+.view-back-btn:hover {
+  color: #5998F6;
+}
 
-  .view-img-container {
-    display: flex;
-    background-color: #ffffff;
-    padding: 10px;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  }
-  
-  .item-image img {
-    width: 200px;
-    height: 200px;
-   object-fit: cover;
-    border-radius: 10px;
-    border: 1px solid #e5e7eb;
-  }
-  
-  .item-details-text {
-    flex: 1;
-  }
-  
-  .owner-name {
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-  
-  .price {
-    font-size: 20px;
-    font-weight: bold;
-    margin: 10px 0;
-  }
-  
-  .info-grid {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    row-gap: 10px;
-    margin-top: 20px;
-  }
-  
-  .label {
-    color: #007BFF;
-    font-weight: 500;
-  }
-  
-  .rent-now-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #5a9bfc;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  
-  
+.item-info-container {
+  display: flex;
+  flex: 1;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 30px;
+}
+
+.view-img-container {
+  flex: 1;
+  width: 500px;
+  height: 500px;
+}
+
+.view-item-image img {
+  border-radius: 12px;
+  object-fit: cover;
+  width: 300px;
+  height: auto;
+}
+
+.item-details-text {
+  flex: 1 1 55%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-left: 30px;
+}
+
+.view-post-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.view-profile-icon {
+  width: 28px;
+  height: 28px;
+  color: #5998F6;
+}
+
+.owner-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #5998F6;
+}
+
+.view-item-name h2 {
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.view-item-price .price {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 6px 12px;
+  font-size: 0.9rem;
+}
+
+.label {
+  font-weight: 600;
+  color: #5998F6;
+}
+
+.rent-now-btn {
+  margin-top: auto;
+  align-self: flex-start;
+  background-color: #5998F6;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 40px;
+}
+
+.rent-now-btn:hover {
+  background-color: #2563eb;
+}
