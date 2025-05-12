@@ -19,7 +19,7 @@
   .login-menu {
     align-items: center;
     justify-content: center;
-    padding-top: 10px;
+
   }
   
   .login-menu-btn {
@@ -67,11 +67,11 @@
   
   .login-nav-link:hover {
     color: #5998F6;
-    border-bottom: 3px solid #5998F6;
+    
   }
   
   /* Active link: shows "hover" effect only on the current route */
-  .login-nav-link.active {
+  .login-nav-link.active, .login-nav-link.focus {
     color: #5998F6;
     border-bottom: 3px solid #5998F6;
   }
@@ -96,45 +96,66 @@
     color: white;
     right: 0;
   }
-  
-  
-  
+
+  .login-menu-overlay {
+    display: none;
+  }
+
   @media (max-width: 720px) {
-    .login-menu {
-      display: flex;
-    }
-  
-    /* Initially hide the menu */
-    .login-nav-menu {
-      display: none;
-      position: absolute;
-      top: 78px; /* Adjust position based on navbar height */
-      left: 0;
-      background-color: #fff; /* Optional: set background color */
-      flex-direction: column; /* Stack menu items vertically */
-      gap: 15px;
-      width: 30%; /* Make the menu take full width on mobile */
-      padding: 20px;
-      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-      border-radius: 8px; /* Optional: rounded corners */
-      margin-left: 20px;
-      
-    }
-  
-    /* When menu is toggled, display it */
-    .login-nav-menu.active {
-      display: flex;
-    }
-  
     .login-menu-btn {
       display: flex;
     }
-  
-    .login-nav-link.active {
-      color: #5998F6; /* example highlight color */
-      font-weight: bold;
-      border-bottom: 3px solid #5998F6;
+
+    .login-nav-menu {
+      display: none;
+    }
+
+    .login-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      display: flex;
+      justify-content: flex-end;
+      overflow-y: auto;
     }
   
-  }
+    .login-menu-content {
+      width: 250px;
+      background-color: white;
+      height: 100%;
+      padding: 20px;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
   
+    .login-menu-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+  
+    .login-nav-link {
+      display: block;
+      padding: 15px;
+      font-size: 16px;
+      color: #333;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+  
+    .login-nav-link:hover,
+    .login-nav-link.active {
+      background-color: #f4f4f4;
+      color: #1d4ed8;
+    }
+  
+    .login-menu-links li + li {
+      margin-top: 10px;
+    }
+  }

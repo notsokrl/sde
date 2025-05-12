@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import './Register.css';
-import logo from '../Assets/logo.png';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid';
 import { Link, useNavigate } from 'react-router-dom';
 import TermsModal from "../PrivacyPolicy/TermsModal";
@@ -76,9 +75,6 @@ const Register = () => {
       </section>
 
       <section className="register-form">
-        <Link to="/home">
-          <img src={logo} alt="Logo" className="register-logo" />
-        </Link>
         <p className="register-title">Register</p>
 
         <form onSubmit={handleSubmit}>

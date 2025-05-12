@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid';
-import logo from '../Assets/logo.png';
 import { Link, useNavigate } from 'react-router-dom'; 
 import './Login.css'
 
-const Login = () => {
+const Login = ({ setIsLoggedIn }) => {
 
   const navigate = useNavigate();
   const [error, setError] = useState('');
@@ -13,6 +12,9 @@ const Login = () => {
     username: '',
     password: '',
   });
+
+  
+  
   
  
 
@@ -45,6 +47,8 @@ const Login = () => {
       
       // ✅ Save a dummy token (or real token from server in real use)
       localStorage.setItem('token', 'dummy_token_value'); 
+
+      setIsLoggedIn(true);
       
       navigate('/rental-section');
     } else {
@@ -88,9 +92,7 @@ const Login = () => {
       </section>
 
       <section className="login-logo-container">
-      <Link to="/">
-        <img src={logo} alt="Logo" className='login-logo' />
-      </Link>
+  
       <p className="login-login-title">Login</p>
 
       <form onSubmit={handleSubmit}>

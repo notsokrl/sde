@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import logo from '../Assets/logo.png';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Admin.css';
 
 function Admin() {
@@ -77,9 +76,6 @@ function Admin() {
 
       {/* Right section - Login form */}
       <section className="admin-right">
-        <Link to="/home">
-          <img src={logo} alt="Logo" className="admin-logo" />
-        </Link>
         <h2 className="admin-title">Admin</h2>
 
         <form onSubmit={handleSubmit}>

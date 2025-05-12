@@ -1,4 +1,5 @@
 import './App.css';
+import { useState, useEffect } from 'react';
 import Navbar from './Components/Navbar/Navbar';
 import Footer from './Components/Footer/Footer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -9,22 +10,41 @@ import LoginForm from './Pages/LoginForm';
 import RegisterForm from './Pages/RegisterForm';
 import AdminForm from './Pages/AdminForm';
 import RentalPage from './Pages/RentalPage';
+import UserNavbar from './Components/Navbar/UserNavbar';
+import ViewDetailsPage from './Pages/ViewDetailsPage';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // null = not yet determined
+
+  useEffect(() => {
+    const token = localStorage.getItem('authToken');
+    setIsLoggedIn(!!token);
+  }, []);
+
+  if (isLoggedIn === null) return null; // Or a loading spinner if preferred
+
   return (
     <BrowserRouter>
-      <Navbar/>
+      {isLoggedIn ? (
+        <UserNavbar setIsLoggedIn={setIsLoggedIn} />
+      ) : (
+        <Navbar />
+      )}
+
+
       <Routes>
         <Route path='/' element={<RentNow />} />
         <Route path='/about-us' element={<AboutPage />} />
         <Route path='/contact' element={<ContactPage />} />
-        <Route path='/login' element={<LoginForm />} />
+        <Route path='/login' element={<LoginForm setIsLoggedIn={setIsLoggedIn} />} />
+
         <Route path='/register' element={<RegisterForm />} />
         <Route path='/admin' element={<AdminForm />} />
         <Route path='/rental-section' element={<RentalPage />} />
+        <Route path='/view-details' element={<ViewDetailsPage />} />
       </Routes>
-      <Footer/>
 
+      <Footer />
     </BrowserRouter>
   );
 }

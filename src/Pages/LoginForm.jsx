@@ -1,12 +1,12 @@
-import React from 'react'
-import Login from '../Components/Forms/Login'
+import React from 'react';
+import Login from '../Components/Forms/Login';
 
-const LoginForm = () => {
+const LoginForm = ({ setIsLoggedIn }) => {
   return (
     <div>
-        <Login/>
+      <Login setIsLoggedIn={setIsLoggedIn} />
     </div>
-  )
-}
+  );
+};
 
-export default LoginForm
+export default LoginForm;

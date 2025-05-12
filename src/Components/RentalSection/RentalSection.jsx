@@ -1,8 +1,9 @@
 import React from 'react'
-import banner from '../Assets/banner.jpg'; 
+import banner from '../Assets/banner.jpg';
 import itemImage from '../Assets/calculator.jpg'; 
 import './RentalSection.css'
 import { EyeIcon } from "@heroicons/react/24/outline";
+import { Link } from 'react-router-dom';
 
 
 const RentalSection = () => {
@@ -44,7 +45,9 @@ const RentalSection = () => {
                   <span className="rental-eye-icon">
                     <EyeIcon />
                   </span>
-                  <span className="rental-view-details-text">View Details</span>
+                  <Link to="/view-details" className="rental-view-details-text">
+                    View Details
+                  </Link>
                 </button>
               </div>
             </article>
@@ -56,4 +59,4 @@ const RentalSection = () => {
   )
 }
 
-export default RentalSection
+export default RentalSection;
