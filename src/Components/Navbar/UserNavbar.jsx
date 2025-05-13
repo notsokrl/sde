@@ -8,6 +8,7 @@ import {
   UserCircleIcon,
   ArrowLeftEndOnRectangleIcon,
 } from '@heroicons/react/24/outline';
+import Post from '../PostSection/Post';
 
 const UserNavbar = ({ setIsLoggedIn }) => {
 
@@ -16,6 +17,12 @@ const UserNavbar = ({ setIsLoggedIn }) => {
   const menuRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+const closeModal = () => {
+  setIsModalOpen(false);
+};
 
 
 const getActiveMenu = () => {
@@ -87,12 +94,12 @@ const activeMenu = getActiveMenu();
           </Link>
         </li>
         <li>
-          <Link
-            className={`user-nav-link ${location.pathname === '/post' ? 'active' : ''}`}
-            to="/post"
+          <button
+            className={`user-nav-link ${isModalOpen ? 'active' : ''}`}
+            onClick={() => setIsModalOpen(true)}
           >
             Post
-          </Link>
+          </button>
         </li>
         <li>
           <Link
@@ -149,6 +156,17 @@ const activeMenu = getActiveMenu();
           </div>
         </div>
       )}
+
+      {isModalOpen && (
+  <div className="post-modal-overlay" onClick={closeModal}>
+    <div className="post-modal-content" onClick={(e) => e.stopPropagation()}>
+      <Post onClose={closeModal} />
+    </div>
+  </div>
+)}
+
+
+
 
 {menuOpen && (
   <div className="user-menu-overlay">

@@ -11,6 +11,9 @@ import RegisterForm from './Pages/RegisterForm';
 import AdminForm from './Pages/AdminForm';
 import RentalPage from './Pages/RentalPage';
 import UserNavbar from './Components/Navbar/UserNavbar';
+import ProfilePage from './Pages/ProfilePage';
+import EarningsPage from './Pages/EarningsPage';
+import AdminPage from './Pages/AdminPage';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null); // null = not yet determined
@@ -40,6 +43,10 @@ function App() {
         <Route path='/register' element={<RegisterForm />} />
         <Route path='/admin' element={<AdminForm />} />
         <Route path='/rental-section' element={<RentalPage />} />
+        <Route path='/dashboard' element={<AdminPage />} />
+
+        <Route path='/profile' element={<ProfilePage />} />
+        <Route path='/earnings' element={<EarningsPage />} />
         
       </Routes>
 

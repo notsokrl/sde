@@ -1,0 +1,271 @@
+/* Grid Layout for Dashboard Cards */
+.admin-cardGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  padding: 2rem;
+  padding-top: 78px;
+   margin-top: 30px;
+}
+
+/* ===== Earnings Card ===== */
+.admin-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  
+}
+
+.admin-cardContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-column2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-statContainer {
+  margin-top: 1rem;
+}
+
+.admin-statHeader {
+  margin-bottom: 1rem;
+}
+
+.admin-iconAndTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admin-earningIcon {
+  width: 32px;
+  height: 32px;
+  color: #5998f6;
+}
+
+.admin-earnings {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* ✅ 2-Column Grid for Earnings Stats */
+.admin-statBodyGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.admin-statGroup {
+  background-color: #f9fafb;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.admin-subtitle {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #5998f6;
+}
+
+.admin-statValue {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin-top: 0.5rem;
+}
+
+/* ===== Users Card ===== */
+.card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.column2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.statContainer {
+  margin-top: 1rem;
+}
+
+.statHeader {
+  margin-bottom: 1rem;
+}
+
+.statHeaderText {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.iconAndTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.earningIcon {
+  width: 32px;
+  height: 32px;
+  color: #3b82f6;
+}
+
+.earnings {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* ✅ 2-Column Grid for User Stats */
+.statBodyUsers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.statRightUsers {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.statBody {
+  background-color: #f9fafb;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.statLeftUsers {
+  background-color: #f9fafb;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.statValue {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-top: 0.5rem;
+}
+
+/* ===== Transaction Card ===== */
+.activityCard {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.transactionList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.transactionItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: #f9fafb;
+  padding: 0.75rem;
+  border-radius: 8px;
+}
+
+.transactionImage {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.transactionDetails {
+  flex: 1;
+}
+
+.transactionName {
+  font-weight: 500;
+  display: block;
+  color: #111827;
+}
+
+.transactionDate {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.transactionPrice {
+  font-weight: 600;
+  color: #10b981;
+}
+
+/* ===== Recent Activity ===== */
+.activityList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.activityItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background-color: #f3f4f6;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.activityProfileImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.activityDetails {
+  flex: 1;
+}
+
+.activityMessage {
+  margin: 0;
+  color: #111827;
+}
+
+.activityMeta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+.seeMoreLink {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.seeMoreLink:hover {
+  text-decoration: underline;
+}

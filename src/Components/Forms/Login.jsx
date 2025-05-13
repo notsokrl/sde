@@ -48,7 +48,6 @@ const Login = ({ setIsLoggedIn }) => {
       // ✅ Save a dummy token (or real token from server in real use)
       localStorage.setItem('authToken', 'dummy_token_value');
 
-
       setIsLoggedIn(true);
       
       navigate('/rental-section');
