@@ -9,8 +9,10 @@ import {
   ArrowLeftEndOnRectangleIcon,
 } from '@heroicons/react/24/outline';
 import Post from '../PostSection/Post';
+import { useAuth } from '../../Context/AuthContext';
 
-const UserNavbar = ({ setIsLoggedIn }) => {
+const UserNavbar = () => {
+  const { setIsLoggedIn } = useAuth(); 
 
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);

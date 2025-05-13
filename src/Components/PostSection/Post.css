@@ -7,7 +7,7 @@
   max-width: 1440px; /* Fixed maximum width */
   max-height: 720px; /* Fixed maximum height */
   position: relative; /* Ensure positioning context */
- overflow: hidden;
+  overflow: hidden;
 }
 
 .post-header {
@@ -52,13 +52,15 @@
 }
 
 .post-form {
+
   flex-direction: column;
   align-items: stretch;
   width: 1440px; /* Ensure full width responsiveness */
   max-width: 1440px; /* Fixed max-width */
-  padding-top: 78px;
+  padding-top: 90px;
   padding-left: 42px;
   padding-right: 42px;
+  margin-bottom: -30px;
   display: flex;
   box-sizing: border-box;
 }
@@ -150,7 +152,7 @@
   flex-direction: column;
   align-items: stretch;
   width: 56%;
-  margin-left: 20px;
+  margin-left: -100px;
   line-height: normal;
   display: flex;
   padding-top: 10px;

@@ -1,7 +1,5 @@
 import './App.css';
-import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import Navbar from './Components/Navbar/Navbar';
 import Footer from './Components/Footer/Footer';
 import RentNow from './Pages/RentNow';
 import AboutPage from './Pages/AboutPage';
@@ -10,40 +8,37 @@ import LoginForm from './Pages/LoginForm';
 import RegisterForm from './Pages/RegisterForm';
 import AdminForm from './Pages/AdminForm';
 import RentalPage from './Pages/RentalPage';
-import UserNavbar from './Components/Navbar/UserNavbar';
 import ProfilePage from './Pages/ProfilePage';
 import EarningsPage from './Pages/EarningsPage';
 import AdminPage from './Pages/AdminPage';
-import AdminNavbar from './Components/Navbar/AdminNavbar';
 import AccountConfirmationPage from './Pages/AccountConfirmationPage';
 import UserManagementPage from './Pages/UserManagementPage';
+import UserNavbar from './Components/Navbar/UserNavbar';
+import GuestNavbar from './Components/Navbar/GuestNavbar';
+import AdminNavbar from './Components/Navbar/AdminNavbar';
+import { useAuth } from './Context/AuthContext';
 
 function Layout({ children }) {
   const location = useLocation();
-  const [isLoggedIn, setIsLoggedIn] = useState(null);
+  const { isLoggedIn} = useAuth();
 
-  useEffect(() => {
-    const token = localStorage.getItem('authToken');
-    setIsLoggedIn(!!token);
-  }, []);
-
-  if (isLoggedIn === null) return null;
-
+  // Admin routes where we show AdminNavbar and hide other navbars/footers
   const adminRoutes = ['/dashboard', '/account-confirmation', '/user-management'];
+  const isAdminRoute = adminRoutes.includes(location.pathname);
 
   return (
     <>
-      {/* Show AdminNavbar only for admin routes */}
-      {adminRoutes.includes(location.pathname) ? (
+      {isAdminRoute ? (
         <AdminNavbar />
-      ) : isLoggedIn ? (
-        <UserNavbar setIsLoggedIn={setIsLoggedIn} />
+      ) : isLoggedIn ? ( // ✅ If logged in, show UserNavbar
+        <UserNavbar />
       ) : (
-        <Navbar />
+        <GuestNavbar />
       )}
 
       {children}
-      <Footer />
+
+      {!isAdminRoute && <Footer />}
     </>
   );
 }

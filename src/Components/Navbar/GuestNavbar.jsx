@@ -4,7 +4,7 @@ import logo from '../Assets/logo.png';
 import { Link, useLocation } from 'react-router-dom';
 import { Bars3Icon } from '@heroicons/react/24/solid';
 
-const Navbar = () => {
+const GuestNavbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const location = useLocation();
@@ -112,4 +112,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default GuestNavbar;

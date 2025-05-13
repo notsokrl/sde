@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid';
 import { Link, useNavigate } from 'react-router-dom'; 
 import './Login.css'
+import { useAuth } from "../../Context/AuthContext";
 
-const Login = ({ setIsLoggedIn }) => {
-
+const Login = () => {
+  const { setIsLoggedIn } = useAuth(); 
   const navigate = useNavigate();
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
