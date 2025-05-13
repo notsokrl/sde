@@ -115,20 +115,19 @@ const AdminDashboard = () => {
                   </div>
                 </div>
               </div>
-              <div className="statBodyUsers">
-                <div className="statLeftUsers">
-                  <span className="subtitle">Total Users</span>
-                  <p className="statValue">{users.total}</p>
-
-                  <span className="subtitle">This Week</span>
-                  <p className="statValue">{users.thisWeek}</p>
+              <div className="admin-statBodyUsers">
+                <div className="admin-statGroup">
+                  <span className="admin-subtitle">Total Users</span>
+                  <p className="admin-statValue">{users.total}</p>
                 </div>
-              </div>
-            </div>
-            <div className="statRightUsers">
-              <div className="statBody">
-                <span className="subtitle">This Month</span>
-                <p className="statValue">{users.thisMonth}</p>
+                <div className="admin-statGroup">
+                  <span className="admin-subtitle">This Week</span>
+                  <p className="admin-statValue">{users.thisWeek}</p>
+                </div>
+                <div className="admin-statGroup">
+                  <span className="admin-subtitle">This Month</span>
+                    <p className="admin-statValue">{users.thisMonth}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -136,9 +135,9 @@ const AdminDashboard = () => {
       </article>
 
       {/* Transactions Card */}
-      <article className="card activityCard">
-        <div className="cardContent">
-          <h2 className="earnings">Transaction History</h2>
+      <article className="admin-card">
+        <div className="admin-cardContent">
+          <h2 className="admin-earnings">Transaction History</h2>
           <div className="transactionList">
             {transactions.map((txn, index) => (
               <div className="transactionItem" key={index}>
@@ -155,9 +154,9 @@ const AdminDashboard = () => {
       </article>
 
       {/* Recent Activity Card */}
-      <article className="card activityCard">
-        <div className="cardContent">
-          <h2 className="earnings">Recent Activity</h2>
+      <article className="admin-card">
+        <div className="admin-cardContent">
+          <h2 className="admin-earnings">Recent Activity</h2>
           <div className="activityList">
             {recentActivity.map((recentActivity, index) => (
               <div className="activityItem" key={index}>
