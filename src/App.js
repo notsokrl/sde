@@ -17,6 +17,7 @@ import UserNavbar from './Components/Navbar/UserNavbar';
 import GuestNavbar from './Components/Navbar/GuestNavbar';
 import AdminNavbar from './Components/Navbar/AdminNavbar';
 import { useAuth } from './Context/AuthContext';
+import CheckoutPage from './Pages/CheckoutPage';
 
 function Layout({ children }) {
   const location = useLocation();
@@ -60,6 +61,8 @@ function App() {
           <Route path='/earnings' element={<EarningsPage />} />
           <Route path='/account-confirmation' element={<AccountConfirmationPage />} />
           <Route path='/user-management' element={<UserManagementPage />} />
+
+          <Route path='/checkout' element={<CheckoutPage />} />
         </Routes>
       </Layout>
     </BrowserRouter>

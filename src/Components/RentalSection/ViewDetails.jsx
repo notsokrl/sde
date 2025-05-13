@@ -3,6 +3,8 @@ import './ViewDetails.css';
 import calculatorImage from '../Assets/calculator.jpg'; // Ensure to have the image in assets
 import { ArrowLeftIcon } from '@heroicons/react/24/solid';
 import { UserCircleIcon } from '@heroicons/react/24/outline';
+import { Link } from 'react-router-dom';
+
 
 
 const ViewDetails = ({ onClose }) => {
@@ -40,16 +42,18 @@ const ViewDetails = ({ onClose }) => {
 
             <div className="info-grid">
               <span className="label">Rental Duration</span>
-              <span>Within this day</span>
+              <span className= "info-input">Within this day</span>
               <span className="label">Pickup Location</span>
-              <span>GYM LOBBY</span>
+              <span className= "info-input">GYM LOBBY</span>
               <span className="label">Contact Information</span>
-              <span>09090960428</span>
+              <span className= "info-input">09090960428</span>
               <span className="label">Message (optional)</span>
-              <span>You can message din me po thru FB/ MESSENGER: KARLA SALEM</span>
+              <span className= "info-input">You can message din me po thru FB/ MESSENGER: KARLA SALEM</span>
             </div>
 
-            <button className="rent-now-btn">Rent Now</button>
+            <Link to="/checkout">
+  <button className="rent-now-btn">Rent Now</button>
+</Link>
           </div>
         </div>
       </section>
