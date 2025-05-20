@@ -143,7 +143,7 @@
     text-align: left;  /* Align the error message to the left */
     position: absolute; /* Ensure the error message does not push other elements */
     width: 385px; /* Same width as the input field */
-    bottom: 267px; /* Adjust this value based on where you want the error message to appear */
+    bottom: 255px; /* Adjust this value based on where you want the error message to appear */
     margin-left: 10px;
 }
 
