@@ -2,6 +2,7 @@ import React from 'react'
 import logo from '../Assets/logo.png'
 import './Footer.css'
 import { Link } from 'react-router-dom'
+import HomeLink from '../../Context/HomeLink'
 const Footer = () => {
   return (
     <div className='footer'>
@@ -16,7 +17,7 @@ const Footer = () => {
                 <h4>HULAM-E</h4>
                 <div className="footer-subtitle">
                     <ul className="footer-links">
-                    <li>Home</li>
+                    <li><HomeLink/></li>
                     </ul>
                 </div>
             </div>
@@ -25,12 +26,14 @@ const Footer = () => {
                 <h4>COMPANY</h4>
                 <div className="footer-subtitle">
                     <ul className="footer-links">
-                     <Link to="/about-us">
-                    <li>About</li>
-                    </Link>
-                    <Link to="/contact"><li>Contact</li></Link>
-                    
-                    </ul>
+  <li>
+    <Link to="/about-us">About</Link>
+  </li>
+  <li>
+    <Link to="/contact">Contact</Link>
+  </li>
+</ul>
+
                 </div>
             </div>
 
@@ -38,9 +41,14 @@ const Footer = () => {
                 <h4>PRIVACY POLICY</h4>
                 <div className="footer-subtitle">
                     <ul className="footer-links">
-                    <Link to="/terms-and-conditions"><li>Terms and Conditions</li></Link>
-                    <Link to="/privacy-and-security"><li>Privacy and Security</li></Link>
-                    </ul>
+  <li>
+    <Link to="/terms-and-conditions">Terms and Conditions</Link>
+  </li>
+  <li>
+    <Link to="/privacy-and-security">Privacy and Security</Link>
+  </li>
+</ul>
+
                 </div>
             </div>
         </div>

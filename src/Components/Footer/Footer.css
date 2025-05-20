@@ -41,7 +41,6 @@
     min-width: 200px;
     margin-top: -10px;
     font-size: 16px;
-    text-decoration: none;
 }
 
 .footer-section h4 {
@@ -52,6 +51,7 @@
 .footer-subtitle {
     display: flex;
     flex-direction: column;
+    text-decoration: none;
 }
 
 .footer-links {
@@ -61,14 +61,18 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    
 }
 
-.footer-links li {
-    cursor: pointer;
-    color: #9CA3AF;
-    transition: color 0.3s;
-    text-align: left;
-    padding-left: 0;
+.footer-links li a {
+  text-decoration: none;
+  color: #9CA3AF; /* ensure link color matches */
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.footer-links li a:hover {
+    color: white;
 }
 
 .footer-copyright {
