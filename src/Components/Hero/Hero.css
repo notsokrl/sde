@@ -44,6 +44,7 @@
 
 .rent-btn {
     color: #fff;
+    cursor: pointer;
     font-size: 24px;
     background-color: #5998f6;
     border: none;

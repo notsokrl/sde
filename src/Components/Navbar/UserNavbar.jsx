@@ -8,7 +8,6 @@ import {
   UserCircleIcon,
   ArrowLeftEndOnRectangleIcon,
 } from '@heroicons/react/24/outline';
-import Post from '../PostSection/Post';
 import { useAuth } from '../../Context/AuthContext';
 
 const UserNavbar = () => {
@@ -96,12 +95,12 @@ const activeMenu = getActiveMenu();
           </Link>
         </li>
         <li>
-          <button
-            className={`user-nav-link ${isModalOpen ? 'active' : ''}`}
-            onClick={() => setIsModalOpen(true)}
+          <Link
+            className={`user-nav-link ${location.pathname === '/post' ? 'active' : ''}`}
+            to="/post"
           >
             Post
-          </button>
+          </Link>
         </li>
         <li>
           <Link
@@ -122,24 +121,30 @@ const activeMenu = getActiveMenu();
       </ul>
 
       <div className="user-iconGroup">
-        <button className="user-iconButton" aria-label="Cart">
-          <ShoppingBagIcon className="user-heroIcon" />
-        </button>
+  <button className="user-iconButton" aria-label="Cart">
+    <ShoppingBagIcon className="user-heroIcon" />
+  </button>
 
-        <Link to="/profile">
-          <button className="user-iconButton" aria-label="Profile">
-            <UserCircleIcon className="user-heroIcon" />
-          </button>
-        </Link>
+  <Link to="/profile">
+    <button
+      className={`user-iconButton ${
+        location.pathname === '/profile' ? 'active' : ''
+      }`}
+      aria-label="Profile"
+    >
+      <UserCircleIcon className="user-heroIcon" />
+    </button>
+  </Link>
 
-        <button
-          className="user-iconButton"
-          aria-label="Logout"
-          onClick={() => setShowLogoutModal(true)}
-        >
-          <ArrowLeftEndOnRectangleIcon className="user-heroIcon" />
-        </button>
-      </div>
+  <button
+    className="user-iconButton"
+    aria-label="Logout"
+    onClick={() => setShowLogoutModal(true)}
+  >
+    <ArrowLeftEndOnRectangleIcon className="user-heroIcon" />
+  </button>
+</div>
+
 
       {/* 🔐 Logout Modal */}
       {showLogoutModal && (
@@ -158,14 +163,6 @@ const activeMenu = getActiveMenu();
           </div>
         </div>
       )}
-
-      {isModalOpen && (
-  <div className="post-modal-overlay" onClick={closeModal}>
-    <div className="post-modal-content" onClick={(e) => e.stopPropagation()}>
-      <Post onClose={closeModal} />
-    </div>
-  </div>
-)}
 
 
 

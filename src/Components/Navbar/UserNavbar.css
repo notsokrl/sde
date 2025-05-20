@@ -50,10 +50,15 @@
     color: #5998F6;
   }
 
-  .user-nav-link:focus, .user-nav-link:active {
+  .user-nav-link:focus {
     color: #5998F6;
     border-bottom: 3px solid #5998F6;
   }
+
+  .user-nav-link.active {
+    color: #5998F6;
+    border-bottom: 3px solid #5998F6;
+}
 
   .user-nav-buttons {
     display: flex;
@@ -63,11 +68,26 @@
 
 .user-iconGroup {
     display: flex;
-    gap: 50px;
+    gap: 30px;
     align-items: center;
     margin-left: 50px;
     position: relative;
   }
+
+.user-heroIcon:hover {
+  stroke: #5998F6;
+}
+
+.user-heroIcon:focus {
+  stroke: #5998F6;
+}
+
+.user-iconButton.active .user-heroIcon {
+  stroke: #5998F6; /* your desired blue */
+}
+
+
+
 
   .user-iconButton {
     background: none;
@@ -186,6 +206,8 @@
     background-color: rgba(0, 0, 0, 0.5); /* dimmed background */
     z-index: 800;
   }
+
+  
   
   /* Adjust your menu to appear above the overlay */
   .user-nav-menu.active {

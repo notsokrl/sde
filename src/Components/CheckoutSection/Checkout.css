@@ -1,11 +1,12 @@
-.page-container {
+.page-container { 
   font-family: 'Poppins', sans-serif;
   padding-top: 78px;
 }
 
 .main-content {
   display: flex;
-  padding: 20px;
+  padding: 40px;
+  padding-top: 20px;
   gap: 20px;
 }
 
@@ -14,6 +15,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  position: relative; /* To position the back button */
 }
 
 .right-section {
@@ -28,23 +30,20 @@
   padding: 20px;
 }
 
-.section-title {
-  font-size: 20px;
-
-  margin-top: 10px;
-}
+.section-title,
 .item-rented-title {
- font-size: 20px;
- margin-top: 10px;
-
+  font-size: 20px;
+  margin-top: 10px;
 }
 
 .section-subtitle {
   margin-top: 50px;
   margin-bottom: 20px;
   font-size: 18px;
+}
 
-} .checkout-item-image img {
+.checkout-item-image img,
+.image-wrapper img {
   width: 234px;
   height: 185px;
   object-fit: cover;
@@ -54,22 +53,12 @@
   margin-bottom: 20px;
 }
 
-.image-wrapper img {
-  margin-top: 40px;
-  margin-bottom: 40px;
-  width: 234px;
-  height: 185px;
-  object-fit: cover;
-  border-radius: 10px;
-  border: 1px solid #E5E7EB;
-  
-} .image-wrapper {
+.image-wrapper {
   position: relative;
   width: fit-content;
   margin-bottom: 40px;
   margin-top: -20px;
   padding: 10px;
-  
 }
 
 .overlay-title {
@@ -79,7 +68,6 @@
   font-size: 20px;
   font-weight: bold;
 }
-
 
 .item-name {
   font-weight: bold;
@@ -154,7 +142,7 @@
 }
 
 .primary-button {
-  background-color: #3b82f6; /* blue */
+  background-color: #3b82f6;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -166,11 +154,10 @@
 }
 
 .primary-button:hover {
-  background-color: #2563eb; /* darker blue */
-  transform: none;
+  background-color: #2563eb;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-
 }
+
 .rented-item {
   margin-bottom: 30px;
   border-bottom: 1px solid #e5e7eb;
@@ -191,6 +178,7 @@
 .remove-button:hover {
   background-color: #dc2626;
 }
+
 /* Modal styles */
 .modal-overlay {
   position: fixed;
@@ -206,11 +194,16 @@
 }
 
 .modal-content {
+  position: relative;
   background: white;
-  padding: 30px;
-  border-radius: 12px;
+  gap: 20px;
+  padding: 30px 30px;
+  border-radius: 10px;
   text-align: center;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  width: fit-content;
+  height: fit-content;
+  max-width: 90%;
 }
 
 .modal-buttons {
@@ -236,4 +229,50 @@
   padding: 10px 20px;
   border-radius: 8px;
   cursor: pointer;
+
+
+}
+.login-back-button {
+  padding-top: 20px;
+  padding-left: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.login-back-icon {
+  width: 32px;
+  height: 32px;
+  color: #111827;
+  transition: color 0.3s ease;
+}
+
+/* This targets the icon when the button is hovered */
+.login-back-button:hover .login-back-icon {
+  color: #3b82f6;
+}
+
+/*Back button modal*/
+.back-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 10;
+  color: black;
+}
+
+.back-button:hover {
+  color: #3b82f6;
+}
+
+.back-icon {
+  width: 24px;
+  height: 24px;
 }

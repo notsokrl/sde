@@ -18,6 +18,10 @@ const Register = () => {
   const navigate = useNavigate();  // Hook for navigation
   const [errorMessage, setErrorMessage] = useState('');
   const [showTermsModal, setShowTermsModal] = useState(false);
+  // In your registration form after accepting terms
+const registrationDate = new Date().toISOString();
+localStorage.setItem('registrationDate', registrationDate);
+
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);

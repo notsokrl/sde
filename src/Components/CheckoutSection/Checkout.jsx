@@ -1,67 +1,75 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Checkout.css';
-import calculator from '../Assets/calculator.jpg'; // sample image
+import { ArrowLeftIcon } from '@heroicons/react/24/solid';
+
 const Checkout = () => {
-  const [rentedItems, setRentedItems] = useState([
-    { id: 1, name: 'Calculator', price: 100, image: calculator },
-    { id: 2, name: 'Scientific Calculator', price: 150, image: calculator },
-  ]);
+  const navigate = useNavigate();
+  const [rentedItems, setRentedItems] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
+  useEffect(() => {
+    const storedItems = JSON.parse(localStorage.getItem('rentedItems')) || [];
+    setRentedItems(storedItems);
+  }, []);
+
   const removeItem = (id) => {
-    setRentedItems(rentedItems.filter((item) => item.id !== id));
+    const updatedItems = rentedItems.filter((item) => item.id !== id);
+    setRentedItems(updatedItems);
+    localStorage.setItem('rentedItems', JSON.stringify(updatedItems));
   };
 
   const subTotal = rentedItems.reduce((acc, item) => acc + item.price, 0);
   const platformFee = 10;
   const total = subTotal + platformFee;
 
-  const handleCompleteRental = () => {
-    setShowModal(true);
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-  };
+  const handleCompleteRental = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
 
   const confirmRental = () => {
-    // Here you could add API calls or navigation
     alert('Rental confirmed!');
+    setRentedItems([]);
+    localStorage.removeItem('rentedItems');
     setShowModal(false);
   };
 
   return (
     <div className="page-container">
+      <button className="login-back-button" onClick={() => navigate('/rental-section')}>
+        <ArrowLeftIcon className="login-back-icon" />
+      </button>
+
       <div className="main-content">
         <div className="left-section">
           <div className="card item-card">
             <h2 className="item-rented-title">Item Rented</h2>
-            {rentedItems.map((item) => (
-              <div key={item.id} className="rented-item">
-                <div className="image-wrapper">
-                  <img src={item.image} alt={item.name} />
-                  <p className="item-name">{item.name}</p>
-                </div>
-                <div className="item-details">
-                  <div className="price-info">
-                    <div>
-                      <p>Price</p>
-                      <p>₱{item.price.toFixed(2)}</p>
-                    </div>
-                    <div>
-                      <p>Sub Total</p>
-                      <p>₱{item.price.toFixed(2)}</p>
-                    </div>
+            {rentedItems.length === 0 ? (
+              <p className="empty-message">No rented items yet.</p>
+            ) : (
+              rentedItems.map((item) => (
+                <div key={item.id} className="rented-item">
+                  <div className="image-wrapper">
+                    <img src={item.image} alt={item.name} />
+                    <p className="item-name">{item.name}</p>
                   </div>
-                  <button
-                    className="remove-button"
-                    onClick={() => removeItem(item.id)}
-                  >
-                    Remove
-                  </button>
+                  <div className="item-details">
+                    <div className="price-info">
+                      <div>
+                        <p>Price</p>
+                        <p>₱{item.price.toFixed(2)}</p>
+                      </div>
+                      <div>
+                        <p>Sub Total</p>
+                        <p>₱{item.price.toFixed(2)}</p>
+                      </div>
+                    </div>
+                    <button className="remove-button" onClick={() => removeItem(item.id)}>
+                      Remove
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
 
           <div className="card form-card">
@@ -101,7 +109,7 @@ const Checkout = () => {
               </label>
               <label className="payment-option">
                 <input type="radio" name="payment" />
-                PayMongo
+                Gcash
               </label>
             </div>
 
@@ -112,10 +120,12 @@ const Checkout = () => {
         </div>
       </div>
 
-      {/* Modal */}
       {showModal && (
         <div className="modal-overlay">
           <div className="modal-content">
+            <button className="back-button" onClick={closeModal}>
+              <ArrowLeftIcon className="back-icon" />
+            </button>
             <h3>Confirm Rental</h3>
             <p>Total Amount: ₱{total.toFixed(2)}</p>
             <div className="modal-buttons">

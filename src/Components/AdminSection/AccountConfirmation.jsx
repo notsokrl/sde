@@ -1,57 +1,103 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/solid';
 import './AccountConfirmation.css';
 
 const AccountConfirmation = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
-  const [selectedAction, setSelectedAction] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [notification, setNotification] = useState('');
 
-  const users = [
-    {
-      id: '2025001',
-      name: 'Bench Pisot',
-      email: 'bench.pisot@example.com',
-      date: '2025-05-10',
-      profilePic: 'https://via.placeholder.com/50',
-      proof: 'https://via.placeholder.com/150?text=School+ID',
-    },
-    {
-      id: '2025002',
-      name: 'Karla Geng-geng',
-      email: 'karla.geng@example.com',
-      date: '2025-05-08',
-      profilePic: 'https://via.placeholder.com/50',
-      proof: 'https://via.placeholder.com/150?text=Certificate+of+Registration',
-    }
-  ];
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get('/api/users');
+        setUsers(response.data);
+      } catch (error) {
+        console.error('Error fetching users:', error);
+        setUsers([
+          {
+            id: 'U12345',
+            name: 'Jane Doe',
+            email: 'jane@example.com',
+            date: '2025-05-20',
+            profilePic: 'https://via.placeholder.com/50',
+            proof: 'https://via.placeholder.com/300x200?text=Proof+Document',
+            status: ''
+          }
+        ]);
+      }
+    };
+    fetchUsers();
+  }, []);
 
-  const handleActionClick = (user, action) => {
+  const openModal = (user) => {
     setSelectedUser(user);
-    setSelectedAction(action);
-    setShowModal(true);
+    setIsModalOpen(true);
   };
 
-  const handleConfirm = () => {
-    setShowModal(false);
-    // Implement action logic here
+  const closeModal = () => {
+    setSelectedUser(null);
+    setIsModalOpen(false);
   };
 
-  const handleCancel = () => {
-    setShowModal(false);
+  const handleApprove = async (userId) => {
+    try {
+      await axios.post(`/api/users/${userId}/status`, {
+        status: 'Approved'
+      });
+      setUsers((prev) =>
+        prev.map((user) =>
+          user.id === userId ? { ...user, status: 'Approved' } : user
+        )
+      );
+      setNotification('Account approved.');
+    } catch (error) {
+      console.error('Error approving user:', error);
+      setNotification('Failed to approve the account.');
+    } finally {
+      closeModal();
+      setTimeout(() => setNotification(''), 3000);
+    }
+  };
+
+  const handleDeny = async (userId) => {
+    try {
+      await axios.post(`/api/users/${userId}/status`, {
+        status: 'Denied'
+      });
+      setUsers((prev) =>
+        prev.map((user) =>
+          user.id === userId ? { ...user, status: 'Denied' } : user
+        )
+      );
+      setNotification('System Notification: Account denied.');
+    } catch (error) {
+      console.error('Error denying user:', error);
+      setNotification('Failed to deny the account.');
+    } finally {
+      closeModal();
+      setTimeout(() => setNotification(''), 3000);
+    }
   };
 
   return (
     <div className="account-confirmation-admin">
       <div className="container">
-        <h1 className="page-title">Account Verification</h1>
+        {notification && (
+          <div className="system-notification">{notification}</div>
+        )}
+
+        <h1 className="page-title">Account Confirmation</h1>
 
         <div className="table-header">
-          <div className="column-header name">Username</div>
-          <div className="column-header id">ID</div>
-          <div className="column-header email">Email</div>
-          <div className="column-header date">Date</div>
-          <div className="column-header proof">Proof</div>
-          <div className="column-header actions">Actions</div>
+          <div className="column-header name">Name</div>
+          <div className="column-header">ID</div>
+          <div className="column-header">Email</div>
+          <div className="column-header">Date</div>
+          <div className="column-header">Proof</div>
+          <div className="column-header">Action</div>
         </div>
 
         {users.map((user) => (
@@ -71,42 +117,38 @@ const AccountConfirmation = () => {
             <div className="approval-buttons">
               <button
                 className="approve-button"
-                onClick={() => handleActionClick(user, 'approve')}
+                onClick={() => openModal(user)}
               >
-                ✅
-              </button>
-              <button
-                className="reject-button"
-                onClick={() => handleActionClick(user, 'reject')}
-              >
-                ❌
+                <CheckCircleIcon className="icon"/>
               </button>
             </div>
+            {user.status && (
+              <div className="account-status">
+                <span>Status: {user.status}</span>
+              </div>
+            )}
           </div>
         ))}
+
+        {isModalOpen && selectedUser && (
+          <div className="modal-overlay">
+            <div className="modal">
+              <button className="modal-close" onClick={closeModal}>&times;</button>
+              <p>Approve or Deny the following proof:</p>
+              <img src={selectedUser.proof} alt="Proof" className="proof-preview" />
+
+              <div className="modal-actions">
+                <button className="confirm-button" onClick={() => handleApprove(selectedUser.id)}>
+                  Approve
+                </button>
+                <button className="deny-button" onClick={() => handleDeny(selectedUser.id)}>
+                  Deny
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
-
-     {showModal && (
-  <div className="modal-overlay">
-    <div className="modal">
-      <button className="modal-close" onClick={handleCancel}>×</button>
-      <p>
-        Are you sure you want to {selectedAction === 'approve' ? 'approve' : 'reject'}{' '}
-        <strong>{selectedUser.name}</strong>'s account?
-      </p>
-      <div className="modal-actions">
-        <button
-          className={selectedAction === 'approve' ? 'confirm-button' : 'deny-button'}
-          onClick={handleConfirm}
-        >
-          {selectedAction === 'approve' ? 'Accept' : 'Deny'}
-        </button>
-      </div>
-    </div>
-  </div>
-
-
-      )}
     </div>
   );
 };

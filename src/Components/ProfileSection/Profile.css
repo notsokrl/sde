@@ -45,7 +45,7 @@
   position: absolute;
   bottom: 50px;
   right: 20px;
-  background: #5998F6;
+  background: none;
   border: none;
   cursor: pointer;
   padding: 0.4rem;
@@ -141,6 +141,10 @@
 
 .profile-navItem:hover {
   color: #5998F6;
-  text-decoration: underline;
   transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.profile-navItem.active {
+  color: #5998F6;
+  border-bottom: 3px solid #5998F6;
 }

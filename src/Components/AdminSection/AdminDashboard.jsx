@@ -23,7 +23,7 @@ const recentActivity = [
 
 const AdminDashboard = () => {
   const [earnings, setEarnings] = useState({
-    totalEarnings:0,
+    totalEarnings: 0,
     thisWeek: 0,
     totalRevenue: 0,
     thisMonth: 0,
@@ -40,8 +40,10 @@ const AdminDashboard = () => {
       try {
         const response = await axios.get('http://localhost:5000/api/earnings');
         setEarnings({
-          totalEarningsThisWeek: response.data.totalEarningsThisWeek,
-          totalRevenueThisMonth: response.data.totalRevenueThisMonth,
+          totalEarnings: response.data.totalEarningsThisWeek,
+          totalRevenue: response.data.totalRevenueThisMonth,
+          thisWeek: 0,
+          thisMonth: 0,
         });
       } catch (error) {
         console.error('Error fetching earnings:', error);
@@ -80,23 +82,22 @@ const AdminDashboard = () => {
               </div>
               <div className="admin-statBodyGrid">
                 <div className="admin-statGroup">
-                    <span className="admin-subtitle">Total Earnings</span>
-                    <p className="admin-statValue">₱{earnings.totalEarnings.toLocaleString()}</p>
+                  <span className="admin-subtitle">Total Earnings</span>
+                  <p className="admin-statValue">₱{earnings.totalEarnings.toLocaleString()}</p>
                 </div>
                 <div className="admin-statGroup">
-                    <span className="admin-subtitle">Total Revenue</span>
-                    <p className="admin-statValue">₱{earnings.totalRevenue.toLocaleString()}</p>
+                  <span className="admin-subtitle">Total Revenue</span>
+                  <p className="admin-statValue">₱{earnings.totalRevenue.toLocaleString()}</p>
                 </div>
                 <div className="admin-statGroup">
-                    <span className="admin-subtitle">This Week</span>
-                    <p className="admin-statValue">₱{earnings.thisWeek.toLocaleString()}</p>
+                  <span className="admin-subtitle">This Week</span>
+                  <p className="admin-statValue">₱{earnings.thisWeek.toLocaleString()}</p>
                 </div>
                 <div className="admin-statGroup">
-                    <span className="admin-subtitle">This Month</span>
-                    <p className="admin-statValue">₱{earnings.thisMonth.toLocaleString()}</p>
+                  <span className="admin-subtitle">This Month</span>
+                  <p className="admin-statValue">₱{earnings.thisMonth.toLocaleString()}</p>
                 </div>
-                </div>
-
+              </div>
             </div>
           </div>
         </div>
@@ -108,11 +109,9 @@ const AdminDashboard = () => {
           <div className="admin-column2">
             <div className="admin-statContainer">
               <div className="admin-statHeader">
-                <div className="admin-statHeaderText">
-                  <div className="admin-iconAndTitle">
-                    <UserGroupIcon className="admin-earningIcon" />
-                    <h2 className="admin-earnings">Users</h2>
-                  </div>
+                <div className="admin-iconAndTitle">
+                  <UserGroupIcon className="admin-earningIcon" />
+                  <h2 className="admin-earnings">Users</h2>
                 </div>
               </div>
               <div className="admin-statBodyUsers">
@@ -126,7 +125,7 @@ const AdminDashboard = () => {
                 </div>
                 <div className="admin-statGroup">
                   <span className="admin-subtitle">This Month</span>
-                    <p className="admin-statValue">{users.thisMonth}</p>
+                  <p className="admin-statValue">{users.thisMonth}</p>
                 </div>
               </div>
             </div>
@@ -134,7 +133,7 @@ const AdminDashboard = () => {
         </div>
       </article>
 
-      {/* Transactions Card */}
+      {/* Transaction History */}
       <article className="admin-card">
         <div className="admin-cardContent">
           <h2 className="admin-earnings">Transaction History</h2>
@@ -153,25 +152,25 @@ const AdminDashboard = () => {
         </div>
       </article>
 
-      {/* Recent Activity Card */}
+      {/* Recent Activity */}
       <article className="admin-card">
         <div className="admin-cardContent">
           <h2 className="admin-earnings">Recent Activity</h2>
           <div className="activityList">
-            {recentActivity.map((recentActivity, index) => (
+            {recentActivity.map((activity, index) => (
               <div className="activityItem" key={index}>
                 <img
-                  src={require(`../Assets/${recentActivity.profileImage}`)}
-                  alt={recentActivity.renterName}
+                  src={require(`../Assets/${activity.profileImage}`)}
+                  alt={activity.renterName}
                   className="activityProfileImage"
                 />
                 <div className="activityDetails">
                   <p className="activityMessage">
-                    <strong>{recentActivity.renterName}</strong> posted a new item: <em>{recentActivity.itemTitle}</em>
+                    <strong>{activity.renterName}</strong> posted a new item: <em>{activity.itemTitle}</em>
                   </p>
                   <div className="activityMeta">
-                    <span className="activityDate">{recentActivity.datePosted}</span>
-                    <Link to={`rental-post${recentActivity.id}`} className="seeMoreLink">
+                    <span className="activityDate">{activity.datePosted}</span>
+                    <Link to={`rental-post${activity.id}`} className="seeMoreLink">
                       See more →
                     </Link>
                   </div>

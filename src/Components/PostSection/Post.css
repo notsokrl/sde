@@ -4,14 +4,12 @@
   overflow: hidden; /* Prevent scrolling */
   width: 100%; /* Make sure it's responsive */
   height: 100vh; /* Ensure the height covers the full viewport */
-  max-width: 1440px; /* Fixed maximum width */
-  max-height: 720px; /* Fixed maximum height */
   position: relative; /* Ensure positioning context */
   overflow: hidden;
 }
 
 .post-header {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%; /* Ensure header width is responsive */
@@ -22,10 +20,9 @@
   align-items: center;
   font-size: 16px;
   font-weight: 400;
-  box-shadow: 0 4px 4px #00000040;
-  z-index: 999;
   padding: 0 30px;
-  box-sizing: border-box;
+  margin-top: 78px;
+  overflow: hidden;
 }
 
 .post-logo {
@@ -52,30 +49,17 @@
 }
 
 .post-form {
-
   flex-direction: column;
   align-items: stretch;
   width: 1440px; /* Ensure full width responsiveness */
   max-width: 1440px; /* Fixed max-width */
-  padding-top: 90px;
-  padding-left: 42px;
-  padding-right: 42px;
+  padding-left: 200px;
+  padding-right: 100px;
+  margin-top: 5px;
   margin-bottom: -30px;
   display: flex;
   box-sizing: border-box;
 }
-
-.post-back-btn {
-  position: absolute; /* Positions it relative to its nearest positioned ancestor */
-  right: 16px; /* Adjust distance from the right edge */
-  top: 50%; /* Vertically center the button */
-  transform: translateY(-50%); /* Corrects vertical alignment */
-  width: 32px;
-  height: 32px;
-  color: #000;
-  cursor: pointer;
-}
-
 
 .post-div3 {
   padding-top: 10px;
@@ -162,7 +146,7 @@
 .post-div6 {
   color: #111827;
   align-self: stretch;
-  margin-top: -40px;
+  margin-top: -30px;
   font-family: Poppins, sans-serif;
   font-size: 20px;
   font-weight: 500;
@@ -180,9 +164,9 @@
   font-size: 24px;
   font-weight: 700;
   display: block;
-  margin: 0px auto 50px auto;
+  margin:   0px auto 40px auto;
   text-align: center;
-  margin-left: 920px;
+  margin-left: 700px;
 }
 
 .formInput {

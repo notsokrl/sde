@@ -41,13 +41,6 @@ const Post = ({ onClose }) => {
         <img src= {owl} alt="Create post icon" className="post-img"/>
         <h1 className="createaPost">Create a Post</h1>
         </div>
-
-        <XMarkIcon
-        className="post-back-btn"
-        aria-label="Post Back"
-        onClick={onClose}
-        style={{ cursor: 'pointer' }} // optional for better UX
-      />
       </div>
 
       <form onSubmit={handleSubmit} className='post-form'>

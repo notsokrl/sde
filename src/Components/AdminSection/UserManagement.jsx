@@ -1,5 +1,16 @@
 import React, { useState } from 'react';
 import './UserManagement.css';
+import {
+  CheckCircleIcon,
+  ClockIcon,
+  XCircleIcon,
+  NoSymbolIcon,
+  EyeIcon,
+  LockClosedIcon, 
+  UserMinusIcon,
+  TrashIcon,
+} from '@heroicons/react/24/solid';
+
 
 const users = [
   {
@@ -79,10 +90,18 @@ const UserManagement = () => {
 
   const renderStatusBadge = (status) => {
     switch (status) {
-      case 'Verified': return <span className="badge verified">✅ Verified</span>;
-      case 'Pending Verification': return <span className="badge pending">⏳ Pending</span>;
-      case 'Rejected': return <span className="badge rejected">❌ Rejected</span>;
-      default: return <span className="badge not-verified">🔴 Not Verified</span>;
+      case 'Verified': return  <span className="badge verified">
+            <CheckCircleIcon className="icon" /> Verified
+          </span>
+      case 'Pending Verification': return   <span className="badge pending">
+            <ClockIcon className="icon" /> Pending
+          </span>
+      case 'Rejected': return    <span className="badge rejected">
+            <XCircleIcon className="icon" /> Rejected
+          </span>
+      default: return <span className="badge not-verified">
+            <NoSymbolIcon className="icon" /> Not Verified
+          </span>
     }
   };
 
@@ -112,10 +131,10 @@ const UserManagement = () => {
           </div>
           <div className="user-status">{renderStatusBadge(user.status)}</div>
           <div className="user-actions">
-            <button className="view-button" onClick={() => handleViewDetails(user)}>🔍 View</button>
-            <button className="suspend-button" onClick={() => openConfirmModal(user, 'Suspend')}>⛔ Suspend</button>
-            <button className="deactivate-button" onClick={() => openConfirmModal(user, 'Deactivate')}>🔒 Deactivate</button>
-            <button className="delete-button" onClick={() => openConfirmModal(user, 'Delete')}>🗑️ Delete</button>
+            <button className="view-button" onClick={() => handleViewDetails(user)}>  <EyeIcon className="icon" /> View </button>
+            <button className="suspend-button" onClick={() => openConfirmModal(user, 'Suspend')}>  < UserMinusIcon className="icon" /> Suspend</button>
+            <button className="deactivate-button" onClick={() => openConfirmModal(user, 'Deactivate')}> <LockClosedIcon className="icon" /> Deactivate</button>
+            <button className="delete-button" onClick={() => openConfirmModal(user, 'Delete')}>  <TrashIcon className="icon" /> Delete</button>
           </div>
         </div>
       ))}

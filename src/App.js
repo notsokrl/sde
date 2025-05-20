@@ -18,6 +18,9 @@ import GuestNavbar from './Components/Navbar/GuestNavbar';
 import AdminNavbar from './Components/Navbar/AdminNavbar';
 import { useAuth } from './Context/AuthContext';
 import CheckoutPage from './Pages/CheckoutPage';
+import PostPage from './Pages/PostPage';
+import TermsandConditionPage from './Pages/TermsandConditionPage';
+import PrivacyPolicyPage from './Pages/PrivacyPolicyPage';
 
 function Layout({ children }) {
   const location = useLocation();
@@ -61,8 +64,11 @@ function App() {
           <Route path='/earnings' element={<EarningsPage />} />
           <Route path='/account-confirmation' element={<AccountConfirmationPage />} />
           <Route path='/user-management' element={<UserManagementPage />} />
-
+          <Route path='/post' element={<PostPage />} />
           <Route path='/checkout' element={<CheckoutPage />} />
+
+          <Route path='/terms-and-conditions' element={<TermsandConditionPage />} />
+          <Route path='/privacy-and-security' element={<PrivacyPolicyPage />} />
         </Routes>
       </Layout>
     </BrowserRouter>

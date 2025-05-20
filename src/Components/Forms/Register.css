@@ -46,6 +46,10 @@
     font-weight: 700;
 }
 
+.register-login-btn:hover {
+    background-color: #1e40af;
+}
+
 .register-form   {
     flex-direction: column;
     justify-content: center;
@@ -204,6 +208,10 @@
     font-size: 32px;
     font-weight: 700;
     padding: 0px 10px;
+}
+
+.register-register-btn:hover {
+    background-color: #1e40af;
 }
 
 .register-adminButtonContainer {
