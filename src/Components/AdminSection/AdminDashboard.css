@@ -115,6 +115,17 @@
   flex-direction: column;
   gap: 16px; /* Adjusted gap */
   margin-top: 16px; /* Adjusted margin */
+  max-height: 300px; /* Set a max height for scroll */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding-right: 8px; /* Optional: space for scrollbar */
+}
+.transactionList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.transactionList::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
 }
 
 .transactionItem {
@@ -159,7 +170,11 @@
   flex-direction: column;
   gap: 16px; /* Adjusted gap */
   margin-top: 16px; /* Adjusted margin */
+  max-height: 300px; /* Set a max height for scroll */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding-right: 8px; /* Optional: space for scrollbar */
 }
+
 
 .activityItem {
   display: flex;
@@ -201,4 +216,60 @@
 
 .seeMoreLink:hover {
   text-decoration: underline;
+}
+/* ===== Rental Orders Card ===== */
+
+.rentalOrdersList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Adjusted gap */
+  margin-top: 16px; /* Adjusted margin */
+}
+
+.rentalOrderItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: #f9fafb;
+  padding: 12px; /* Adjusted padding */
+  border-radius: 8px;
+}
+
+.rentalItemImage {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.rentalItemDetails {
+  flex: 1;
+}
+
+.rentalItemName {
+  font-weight: 500;
+  color: #111827;
+  display: block;
+}
+
+.rentalItemRenter {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.rentalOrderDate {
+  font-size: 14px;
+  color: #6b7280;
+  margin-left: auto;
+}
+/* Scrollbar Styling */
+.transactionList::-webkit-scrollbar,
+.activityList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.transactionList::-webkit-scrollbar-thumb,
+.activityList::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
 }

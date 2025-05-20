@@ -54,10 +54,13 @@
   transition: color 0.2s ease;
 }
 
-.admin-nav-link:hover,
-.admin-nav-link:active {
+.admin-nav-link:hover {
   color: #5998F6;
-  text-decoration: underline;
+}
+
+.admin-nav-link.active {
+  color: #5998F6;
+    border-bottom: 3px solid #5998F6;
 }
 
 .admin-iconGroup {
@@ -75,6 +78,11 @@
   align-items: center;
   justify-content: center;
 }
+
+.admin-heroIcon:hover {
+  color: #5998F6;
+}
+
 
 .admin-heroIcon {
   width: 30px;

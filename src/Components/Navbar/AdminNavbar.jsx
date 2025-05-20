@@ -47,16 +47,28 @@ const AdminNavbar = () => {
      
        <ul className='admin-nav-menu'>
   <li>
-    <Link className='admin-nav-link' to="/dashboard">Dashboard</Link>
-    {activeMenu === "dashboard"}
+    <Link
+      className={`admin-nav-link ${activeMenu === 'dashboard' ? 'active' : ''}`}
+      to="/dashboard"
+    >
+      Dashboard
+    </Link>
   </li>
   <li>
-    <Link className='admin-nav-link' to="/account-confirmation">Account Confirmation</Link>
-    {activeMenu === "accountConfirmation" }
+    <Link
+      className={`admin-nav-link ${activeMenu === 'accountConfirmation' ? 'active' : ''}`}
+      to="/account-confirmation"
+    >
+      Account Confirmation
+    </Link>
   </li>
   <li>
-    <Link className='admin-nav-link' to="/user-management">User Management</Link>
-    {activeMenu === "user-management" }
+    <Link
+      className={`admin-nav-link ${activeMenu === 'user-management' ? 'active' : ''}`}
+      to="/user-management"
+    >
+      User Management
+    </Link>
   </li>
 
 
