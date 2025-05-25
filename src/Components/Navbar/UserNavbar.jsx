@@ -121,9 +121,6 @@ const activeMenu = getActiveMenu();
       </ul>
 
       <div className="user-iconGroup">
-  <button className="user-iconButton" aria-label="Cart">
-    <ShoppingBagIcon className="user-heroIcon" />
-  </button>
 
   <Link to="/profile">
     <button

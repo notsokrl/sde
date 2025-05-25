@@ -24,7 +24,7 @@ const PrivacyPolicy = () => {
 
   return (
     <div className="policy-container">
-      <h1>Privacy and Security Policy</h1>
+      <h1>Privacy and Security</h1>
 
       <Section title="1. Information Collection" items={[
         'We collect personal data such as name, student ID, and contact details upon registration.',
