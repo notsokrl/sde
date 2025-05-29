@@ -1,5 +1,5 @@
 .postContent {
-  padding: 2rem;
+  padding: 1rem;
   background-color: #f5f7fa;
   min-height: 75vh;
 }
@@ -19,7 +19,7 @@
 }
 
 .aboutContainer {
-  background: white;
+  background: #ffffff;
   padding: 0px 70px 70px 70px;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
