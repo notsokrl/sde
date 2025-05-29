@@ -111,6 +111,8 @@ const Profile = () => {
           </ul>
         </nav>
       </section>
+      {/* Conditionally render content based on activeTab */}
+      {activeTab === 'post' && <PostContent profileData={profileData} />}
     
 
       {/* Modals */}

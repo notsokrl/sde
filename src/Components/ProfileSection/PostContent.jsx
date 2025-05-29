@@ -84,11 +84,7 @@ const PostContent = ({ profileData }) => {
                         </div>
                       </div>
 
-                    </div>
-                  </div>
-                </div>
-
-                {/* Contact Info */}
+                      {/* Contact Info */}
                 <div className="contactColumn">
                   <div className="contactInfo">
                     <div className="infoRow">
@@ -97,6 +93,10 @@ const PostContent = ({ profileData }) => {
                         <h3 className="infoLabel">Contact Information</h3>
                         <p className="infoValue">{contactNumber || 'Not provided'}</p>
                       </div>
+                    </div>
+                  </div>
+                </div>
+
                     </div>
                   </div>
                 </div>

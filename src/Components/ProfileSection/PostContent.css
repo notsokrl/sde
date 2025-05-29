@@ -7,7 +7,8 @@
 .contentSection {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
+  margin-top: -20px;
 }
 
 .contentColumns {
@@ -119,12 +120,12 @@
 
 .contactColumn {
   display: flex;
-  margin-top: 61px;
+  margin-top: 20px;
   margin-left: 0px;
 }
 
 .contactInfo {
-  padding: 16px;
+ 
   border-radius: 8px;
   display: flex;
   flex-direction: column;

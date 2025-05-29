@@ -6,7 +6,7 @@ const ProfilePage = () => {
   return (
     <div>
         <Profile/>
-        <PostContent/>
+
     </div>
   )
 }
