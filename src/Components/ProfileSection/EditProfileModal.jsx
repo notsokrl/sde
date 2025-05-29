@@ -3,15 +3,39 @@ import './EditProfileModal.css';
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
 const EditProfileModal = ({ onClose, profileData, onSave }) => {
-  const [formData, setFormData] = useState(profileData);
+  const [formData, setFormData] = useState({
+    ...profileData,
+    profileImage: profileData?.profileImage || null,
+  });
 
   useEffect(() => {
-    setFormData(profileData);
+    setFormData({
+      ...profileData,
+      profileImage: profileData?.profileImage || null,
+    });
   }, [profileData]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    const { name, value, type, files } = e.target;
+
+    if (type === 'file') {
+      const file = files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData((prev) => ({
+          ...prev,
+          [name]: reader.result, // base64 string for upload, but no preview display
+        }));
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSubmit = (e) => {
@@ -48,6 +72,7 @@ const EditProfileModal = ({ onClose, profileData, onSave }) => {
           <label>
             Gender
             <select name="gender" value={formData.gender} onChange={handleChange}>
+              <option value="">Select</option>
               <option>Female</option>
               <option>Male</option>
               <option>Other</option>
@@ -63,8 +88,8 @@ const EditProfileModal = ({ onClose, profileData, onSave }) => {
           </label>
 
           <label>
-            Certificate of Registration (for Account Verification)
-            <input type="file" name="certificate" onChange={handleChange} />
+            Profile Image
+            <input type="file" name="profileImage" accept="image/*" onChange={handleChange} />
           </label>
 
           <div className="modalButtons">

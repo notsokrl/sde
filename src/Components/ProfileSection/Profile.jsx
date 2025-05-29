@@ -3,17 +3,25 @@ import './Profile.css';
 import { PencilSquareIcon, UserCircleIcon } from "@heroicons/react/24/outline";
 import { Link, useLocation } from 'react-router-dom';
 import EditProfileModal from './EditProfileModal';
+import StudentVerificationModal from './StudentVerificationModal';
+import PostContent from './PostContent'; // ✅ Import PostContent
+import EarningsContent from './EarningsSection'; // <-- Import this component (create if you don't have it)
 
 const Profile = () => {
   const location = useLocation();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVerificationClicked, setIsVerificationClicked] = useState(false);
+  const [isVerificationModalOpen, setIsVerificationModalOpen] = useState(false);
+
   const [profileData, setProfileData] = useState({
-    name: 'Karla Salem',
-    course: '',
+    fullName: '',
+    courseYear: '',
     birthday: '',
     gender: '',
     socialLink: '',
-    contact: '',
+    contactNumber: '',
+    profileImage: null,
   });
 
   useEffect(() => {
@@ -25,6 +33,18 @@ const Profile = () => {
     setProfileData(data);
     localStorage.setItem('profileData', JSON.stringify(data));
     setIsModalOpen(false);
+  };
+
+  const handleCloseVerificationModal = () => {
+    setIsVerificationClicked(false);
+    setIsVerificationModalOpen(false);
+  };
+
+  const handleUpload = (file) => {
+    console.log("Uploaded file:", file);
+    alert(`File uploaded: ${file.name}`);
+    setIsVerificationModalOpen(false);
+    setIsVerificationClicked(false);
   };
 
   const activeTab = (() => {
@@ -42,15 +62,36 @@ const Profile = () => {
           <div className="profile-header" />
 
           <div className="profile-name-container">
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="profile-edit-profile-button"
+            >
+              <PencilSquareIcon className='profile-editIcon' />
+            </button>
+
             <div className="icon-and-name-wrapper">
-              <UserCircleIcon className='profile-userIcon' />
-              <button onClick={() => setIsModalOpen(true)} className="profile-edit-profile-button">
-                <PencilSquareIcon className='profile-editIcon' />
-              </button>
-              <h1 className="profile-name">{profileData.name}</h1>
-            </div>
-            <div className="profile-verificationWrapper">
-              <p className="profile-verificationStatus">Unverified</p>
+              {profileData.profileImage ? (
+                <img
+                  src={profileData.profileImage}
+                  alt="Profile"
+                  className="profile-userImage"
+                />
+              ) : (
+                <UserCircleIcon className="profile-userIcon" />
+              )}
+
+              <div className="name-verification-row">
+                <h1 className="profile-name">{profileData.fullName || "Your Name"}</h1>
+                <p
+                  className={`profile-verificationStatus ${isVerificationClicked ? 'clicked' : ''}`}
+                  onClick={() => {
+                    setIsVerificationClicked(true);
+                    setIsVerificationModalOpen(true);
+                  }}
+                >
+                  *Unverified
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -58,26 +99,36 @@ const Profile = () => {
         <nav className="profile-profileNavigation">
           <ul className="profile-nav-items">
             <li>
-              <Link to="/profile" className={`profile-navItem ${activeTab === 'post' ? 'active' :''}`} >
+              <Link to="/profile" className={`profile-navItem ${activeTab === 'post' ? 'active' : ''}`}>
                 Post
               </Link>
-              {activeTab === 'post'}
             </li>
             <li>
-              <Link to="/earnings" className={`profile-navItem ${activeTab === 'earnings' ? 'active' :''}`} >
+              <Link to="/earnings" className={`profile-navItem ${activeTab === 'earnings' ? 'active' : ''}`}>
                 Earnings
               </Link>
-              {activeTab === 'earnings'}
             </li>
           </ul>
         </nav>
       </section>
 
+      {/* Conditionally render content based on activeTab */}
+      {activeTab === 'post' && <PostContent profileData={profileData} />}
+    
+
+      {/* Modals */}
       {isModalOpen && (
         <EditProfileModal
           profileData={profileData}
           onClose={() => setIsModalOpen(false)}
           onSave={handleSave}
+        />
+      )}
+
+      {isVerificationModalOpen && (
+        <StudentVerificationModal
+          onClose={handleCloseVerificationModal}
+          onUpload={handleUpload}
         />
       )}
     </main>

@@ -26,26 +26,50 @@
   justify-content: center;
   align-items: center;
   margin-top: 12px;
-  margin-right: 20px;
+  margin-right: 30px;
 }
 
 .icon-and-name-wrapper {
-  position: relative;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  position: relative;
+  left: 5%;
 }
 
+.name-verification-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 2px;
+  right: 30px;
+}
+
+.profile-userImage,
 .profile-userIcon {
   width: 100px;
   height: 100px;
+  border-radius: 100%;
+  object-fit: cover;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.profile-userImage {
+  border: 2px solid #5998F6;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.profile-userIcon {
   color: #111827;
 }
 
 .profile-edit-profile-button {
   position: absolute;
-  bottom: 50px;
-  right: 20px;
-  background: none;
+  bottom: 56%;
+  right: 43%;
+  background: #5998F6;
   border: none;
   cursor: pointer;
   padding: 0.4rem;
@@ -55,10 +79,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translate(25%, -25%);
+  z-index: 10;
 }
 
 .profile-edit-profile-button:hover {
-  background-color: #5998F6;
+  background-color: #4a82e8;
 }
 
 .profile-editIcon {
@@ -68,7 +94,7 @@
   transition: color 0.3s ease;
 }
 
-.profile-edit-profile-button:hover .editIcon {
+.profile-edit-profile-button:hover .profile-editIcon {
   color: #f0f0f0;
 }
 
@@ -95,19 +121,32 @@
 
 .profile-name {
   font-size: 24px;
+  left: 20px;
   font-weight: 600;
+  color: #111827;
 }
 
-.profile-verificationWrapper {
-  margin-top: 100px;
-  margin-left: 8px;
-}
-
+/* Verification status */
 .profile-verificationStatus {
-  font-size: 12px;
+  font-size: 14px;
   color: #ff4d4d;
+  font-weight: 500;
+  right: 100px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: text-decoration 0.2s ease, color 0.2s ease;
 }
 
+.profile-verificationStatus:hover {
+  text-decoration: underline; /* underline on hover */
+}
+
+.profile-verificationStatus.clicked {
+  text-decoration: underline;
+  color: #5998F6; /* color when clicked */
+}
+
+/* Navigation styling */
 .profile-profileNavigation {
   display: flex;
   align-items: center;
@@ -138,13 +177,9 @@
   color: #111827;
 }
 
-
-.profile-navItem:hover {
-  color: #5998F6;
-  transition: color 0.2s ease, text-decoration 0.2s ease;
-}
-
+.profile-navItem:hover,
 .profile-navItem.active {
   color: #5998F6;
-  border-bottom: 3px solid #5998F6;
+  text-decoration: underline;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
 }
