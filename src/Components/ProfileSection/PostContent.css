@@ -86,7 +86,7 @@
   height: 24px;
   color: #5998F6;
   flex-shrink: 0;
-  margin-top: 30px;
+  margin-top: 47px;
 }
 
 .phoneIcon {
@@ -94,7 +94,7 @@
   height: 24px;
   color: #5998F6;
   flex-shrink: 0;
-  margin-top: 30px;
+  margin-top: 47px;
 }
 
 .infoLabel {
@@ -119,8 +119,8 @@
 
 .contactColumn {
   display: flex;
-  margin-top: 48px;
-  margin-left: -10px;
+  margin-top: 61px;
+  margin-left: 0px;
 }
 
 .contactInfo {

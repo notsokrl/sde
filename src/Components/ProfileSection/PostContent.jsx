@@ -124,10 +124,14 @@ const PostContent = ({ profileData }) => {
           </div>
 
         </div>
-        
       </section>
 
-  
+      {/* Optional: show profile image and full name on top */}
+      <div style={{ marginTop: '1rem', textAlign: 'center' }}>
+        {profileImage && (
+          <img src={profileImage} alt={`${fullName}'s profile`} width={150} style={{ borderRadius: '50%' }} />
+        )}
+      </div>
     </main>
   );
 };
